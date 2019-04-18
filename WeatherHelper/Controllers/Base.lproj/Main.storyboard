@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Ip8-eC-yz1">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Weather-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="WeatherListViewController" customModule="WeatherHelper" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Swr-e1-O90">
+                                <rect key="frame" x="0.0" y="88" width="414" height="400"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="400" id="S3y-z7-Rxr"/>
+                                </constraints>
+                            </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="jUu-eo-WhQ" customClass="WeatherTableView" customModule="WeatherHelper" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="496" width="414" height="366"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.94117647058823528" green="0.94117647058823528" blue="0.94117647058823528" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="Swr-e1-O90" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="9E0-9c-hUr"/>
+                            <constraint firstItem="Swr-e1-O90" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="ACK-zt-w0F"/>
+                            <constraint firstItem="jUu-eo-WhQ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="F7E-tn-p8B"/>
+                            <constraint firstItem="Swr-e1-O90" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="UyM-PZ-HqM"/>
+                            <constraint firstItem="jUu-eo-WhQ" firstAttribute="top" secondItem="Swr-e1-O90" secondAttribute="bottom" constant="8" id="bze-Mt-vkk"/>
+                            <constraint firstItem="jUu-eo-WhQ" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="hk6-dR-4VD"/>
+                            <constraint firstItem="jUu-eo-WhQ" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="z5u-GC-6Et"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Weather" id="UDJ-na-TE1">
+                        <barButtonItem key="backBarButtonItem" title="back" id="y0x-Oc-Mwe"/>
+                        <barButtonItem key="rightBarButtonItem" title="location" id="Rdq-gq-2IY">
+                            <connections>
+                                <action selector="clickLocation:" destination="BYZ-38-t0r" id="5ao-Q8-OK7"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="headerContentView" destination="Swr-e1-O90" id="Hsr-wX-Yqd"/>
+                        <outlet property="tableView" destination="jUu-eo-WhQ" id="N8r-TR-Y9W"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1544.9275362318842" y="37.5"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="aGc-mH-0TR">
+            <objects>
+                <navigationController id="Ip8-eC-yz1" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Z42-Uc-cT1">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="Ay6-qS-piZ"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VTK-sT-03n" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+        </scene>
+    </scenes>
+</document>
