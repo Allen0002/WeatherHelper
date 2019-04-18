@@ -29,7 +29,7 @@ class WeatherListViewController: UIViewController {
         locationManager.startUpdateLocation()
         locationManager.delegate = self
     }
-    
+    /// default is LA latitude = 37.8267   longitude = -122.4233
     func requestData(_ latitude:Double = 37.8267, _ longitude:Double = -122.4233) {
         dataProvider.requestData(String(latitude), longitude: String(longitude), success: {[weak self] currentlyModel,dailyModels  in
             self?.headerView.updateUI(currentlyModel)

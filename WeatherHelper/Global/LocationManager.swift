@@ -10,17 +10,17 @@ public class LocationManager:NSObject {
     public override init() {
         locationManager = CLLocationManager()
         super.init()
-        locationManager.delegate = self
     }
     
     public func startUpdateLocation(){
-        if (CLLocationManager.authorizationStatus() == .authorizedWhenInUse) {
-            locationManager.delegate = self
+        if (CLLocationManager.authorizationStatus() == .authorizedWhenInUse || CLLocationManager.authorizationStatus() ==  .notDetermined) {
+            locationManager.requestWhenInUseAuthorization()
             locationManager.desiredAccuracy = kCLLocationAccuracyBest
             let distance : CLLocationDistance = 10.0
             locationManager.distanceFilter = distance
             locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
             locationManager.startUpdatingLocation()
+            locationManager.delegate = self
         }
     }
     
@@ -41,8 +41,10 @@ extension LocationManager:CLLocationManagerDelegate{
             self.delegate?.failure(.responseError(description: "cann't find CLLocation instance"))
             return
         }
+        
+        let uerLoc = CLLocation.init(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
         let geocoder = CLGeocoder()
-        geocoder.reverseGeocodeLocation(location) { [weak self] placemarks, error in
+        geocoder.reverseGeocodeLocation(uerLoc) { [weak self] placemarks, error in
             guard error == nil else {
                 self?.delegate?.failure(.responseError(description: String(describing: error)))
                 return
